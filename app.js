@@ -5,7 +5,7 @@ var logger = require("morgan");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
 var mongoose = require("mongoose");
-var Model = require("./models/models");
+var Model = require("./models/model");
 var keys = require("./config/keys");
 
 mongoose.connect(keys.mongoConnectionURI);
@@ -28,7 +28,7 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use("/", indexRouter);
-app.use("/users", usersRouter);
+app.get("/", indexRouter);
+app.get("/users", usersRouter);
 
 module.exports = app;
