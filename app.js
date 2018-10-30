@@ -17,8 +17,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "client/build")));
-// app.use(bodyParser.urlencoded({ extended: true })); ///for post using bodyparser
-// app.use(bodyParser.json());
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -27,6 +25,7 @@ app.use(function(req, res, next) {
   );
   next();
 });
+
 
 app.get("/", indexRouter);
 app.get("/users", usersRouter);
